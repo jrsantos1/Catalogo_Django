@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Moto
 
 # Create your views here.
 
 def index(request):
-    return HttpResponse('<h1>catalogo</h1>')
 
-def index(request):
-    return render(request, 'index.html')
+    motos = Moto.objects.all()
+
+
+    dados = {
+        'motos': motos
+    }
+
+    return render(request, 'index.html', dados)
+
+def moto(request, id):
+    return render(request, 'receita.html')
